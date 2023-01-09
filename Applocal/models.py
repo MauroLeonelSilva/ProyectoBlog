@@ -8,12 +8,11 @@ class blogModel(models.Model):
     titulo= models.CharField(max_length=100)
     subtitulo=models.CharField(max_length=150)
     cuerpo=models.TextField()
-    imagen=models.ImageField(upload_to="imagenesPost")
     autor=models.CharField(max_length=50)
     fecha=models.TimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.titulo+" "+self.subtitulo+" "+self.cuerpo+""+self.imagen+""+self.autor+""+str(self.fecha)
+        return self.titulo+", "+self.subtitulo+" "+self.autor+" fecha:"+str(self.fecha)
 
 class contactomodel(models.Model):
     nombrecontacto = models.CharField(max_length=50)

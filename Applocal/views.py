@@ -5,9 +5,9 @@ from Applocal.forms import *
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 
-from django.contrib.auth.decorators import login_required #vistas para funciones
+from django.contrib.auth.decorators import login_required 
 
-from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -24,6 +24,38 @@ def about(request):
         return render (request, "about.html", {"imagen":obtenerAvatar(request)})
     else:
         return render (request, "about.html")
+
+
+def editarPost(request):
+    
+    if request.method=="POST":
+        form=EditarPostForm(request.POST)
+    
+        if form.is_valid():
+            informacion=form.cleaned_data
+            print(informacion)
+            tituloPost= informacion["titulo"]
+            subtituloPost= informacion["subtitulo"]
+            cuerpoPost= informacion["cuerpo"]
+            autorPost= informacion["autor"]
+            
+
+            postGuardado=blogModel(titulo=tituloPost, subtitulo=subtituloPost, cuerpo=cuerpoPost, autor=autorPost)
+            postGuardado.save()
+            return render (request, "inicio.html", {"imagen":obtenerAvatar(request)})
+        else:
+            return render (request, "editarPost.html", {"form": formulario,"imagen":obtenerAvatar(request)})
+        
+    else:
+        formulario=EditarPostForm()
+
+    return render (request, "editarPost.html", {"form": formulario, "imagen":obtenerAvatar(request)})
+
+
+def publicarPost(request):
+    publicaciones= blogModel.objects.all()
+    print(publicaciones)
+    return render(request, "post.html", {"publicaciones":publicaciones})
 
 
 @login_required
@@ -62,21 +94,8 @@ def post(request):
 #----------------ver Perfil------------------------
 
 def miPerfil(request):
-
-
-
     return render (request, "miPerfil.html", {"imagen":obtenerAvatar(request)})
    
-
-
-
-def leerPerfil(request):
-    
-    return render(request, 'leerPerfil.html')
-    
-
-
-
 
 
 #----------seccion Login ---------

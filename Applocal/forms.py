@@ -3,6 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
+class EditarPostForm(forms.Form):
+    titulo= forms.CharField(max_length=100)
+    subtitulo=forms.CharField(max_length=150)
+    cuerpo=forms.CharField(widget=forms.Textarea(attrs={'id':"editor1" ,'name':'body', 'rows':7, 'cols':60}))
+    autor=forms.CharField(max_length=50)
+    
 
 class ContactoForm(forms.Form):
     nombre = forms.CharField(max_length=50)
