@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1>editarPerfil</h1>
+
+{% endblock %}
+
+{% block contenido %} 
+
+
+<form action="{% url 'editarPerfil' %}" method="POST">{% csrf_token %}
+    <table style="margin: 20px auto;">
+        {{ form.as_table }}
+    </table>
+    <div style="display: flex; justify-content: center;">
+        <p><input type="submit" value="Modificar Datos"></p>
+    </div>
+</form>
+<div style="display: flex; justify-content: center;"><h5 >Cambiar foto Perfil: </h5><a href="{% url 'AgregarAvatar' %}"><p><input type="submit" value="Cambiar foto perfil"></p></a></div>
+
+{{ mensaje }}
+
+{% endblock %}

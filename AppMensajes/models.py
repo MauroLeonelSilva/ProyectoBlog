@@ -91,7 +91,6 @@ class CanalManager(models.Manager):
 
 
 class Canal(ModelBase):
-	#para tener conversaciones multiples
 	
 	usuarios = models.ManyToManyField(User, blank=True, through=CanalUsuario)
 	objects = CanalManager()

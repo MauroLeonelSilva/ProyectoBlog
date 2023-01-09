@@ -6,6 +6,8 @@ urlpatterns = [
     path("about/", about, name="about"),
     path("contact/", contact, name="contact"),
     path("post/", post, name="post"),
+    path("miPerfil/", miPerfil, name="miPerfil"),
+    path("leerPerfil/", leerPerfil, name="leerPerfil"),
 
     path("login/", login_request, name='login'),
     path("register/", register, name="register"),

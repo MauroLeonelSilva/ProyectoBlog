@@ -1,0 +1,23 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1>Mi Perfil</h1>
+
+{% endblock %}
+
+{% block contenido %} 
+
+<div>
+    <h4>Tus datos</h4>
+    {{ user.get_username }} {{user.get_full_name}} {{user.get_emailAddress}}
+</div>
+
+
+<button><a href="{% url 'editarPerfil' %}"><p>Editar Perfil</p></a></button>
+
+{{ mensaje }}
+
+{% endblock %}

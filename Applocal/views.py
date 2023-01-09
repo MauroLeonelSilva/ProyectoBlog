@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate
 
 from django.contrib.auth.decorators import login_required #vistas para funciones
 
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -57,6 +58,26 @@ def post(request):
         return render (request, "post.html", {"imagen":obtenerAvatar(request)})
     else:
         return render (request, "post.html")
+
+#----------------ver Perfil------------------------
+
+def miPerfil(request):
+
+
+
+    return render (request, "miPerfil.html", {"imagen":obtenerAvatar(request)})
+   
+
+
+
+def leerPerfil(request):
+    
+    return render(request, 'leerPerfil.html')
+    
+
+
+
+
 
 #----------seccion Login ---------
 
@@ -117,7 +138,7 @@ def editarPerfil(request):
             return render(request, "inicio.html", {"form":form, "mensaje":"Error al editar el perfil", "imagen":obtenerAvatar(request)})
     else:
         form=UserEditForm(instance=usuario)
-        return render(request, "editarUsuario.html", {"form":form, "imagen":obtenerAvatar(request)})
+        return render(request, "editarPerfil.html", {"form":form, "imagen":obtenerAvatar(request)})
 
 @login_required
 def AgregarAvatar(request):
