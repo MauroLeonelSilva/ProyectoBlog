@@ -1,0 +1,25 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1>formulario de registro</h1>
+
+{% endblock %}
+
+{% block contenido %} 
+
+
+<form action="{% url 'register' %}" method="POST">{% csrf_token %}
+    <table style="margin: 20px auto;">
+        {{ form.as_table }}
+    </table>
+    <div style= "text-align: center">
+        <p><input type="submit" value="crear usuario"></p>
+    </div>
+</form>
+
+{{ mensaje }}
+
+{% endblock %}

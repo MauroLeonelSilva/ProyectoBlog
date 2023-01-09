@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+<h1>usuarios en CoderBlog</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<p>haz click en el usuario con el que quieras iniciar una conversación</p>
+{% endblock %}
+
+
+{% block contenedor %}
+
+<div style=" display: flex; flex-direction: row;justify-content: space-around; background-color: rgb(61, 95, 158); ">
+{% for usuarios in usuarios %}
+            <a href="../MensajeDirecto/{{ usuarios }}">
+                <p style="color: white;">{{ usuarios }}</p>
+            </a>
+            
+            {% endfor %}
+        </div>
+
+
+
+{% endblock %}
+
+

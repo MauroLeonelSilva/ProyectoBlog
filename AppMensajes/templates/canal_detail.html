@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+
+{% for second_user in object.canalusuario_set.all %}
+    {% if second_user.usuario == request.user %}
+    {% else %}
+    
+        <h1>
+            chat con {{second_user.usuario}} {{ imagen }}
+        </h1>
+    
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
+
+{% block contenedor %}
+
+
+
+
+
+
+<div id="externo" style="width: 100%;
+height: calc(70vh);
+margin: 5px 0;
+overflow-y: auto;
+border-bottom: 1px solid #e6e6e6;
+background: #fff;">
+    <div id="interno" class="container px-4 px-lg-5">
+    
+
+        <div>
+            {% for mensaje in object.canalmensaje_set.all %}
+            
+            {% if request.user == mensaje.usuario %}
+                <p>
+                <span>
+                    <strong>Tú</strong>
+                </span>
+                <small>({{mensaje.tiempo}}):</small>
+                </p>
+                <p>
+                    {{mensaje.texto}}
+                </p>
+            {% else %}
+                <p>
+                    <span>
+                        <strong>{{mensaje.usuario}} -</strong>
+                    </span>
+                    <small>({{mensaje.tiempo}}):</small>
+                </p>
+                    <p>
+                        {{mensaje.texto}}
+                    </p>
+                        {% endif %}
+
+            {% endfor %}
+        </div>
+
+        </div>
+
+</div>
+
+<div style="width: 100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            border:1px solid #e6e6e6;">
+
+            <div style= "margin-left: 10em;">
+                <form action="{{ request.path }}" method="POST">
+                    {% csrf_token %}
+                
+                    {{form.as_p}}
+        
+                    <div style= "text-align: center">
+                        <button type="submit">
+                            Enviar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+    
+    </div>
+
+
+
+{% endblock %}

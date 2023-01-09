@@ -1,0 +1,25 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h2>Cambiar Avatar de {{ usuario.username }}</h2>
+
+{% endblock %}
+
+{% block subtitulo %}
+
+
+{% endblock %}
+
+{% block contenido %} 
+<form action="{% url 'AgregarAvatar' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <table style="margin: 20px auto;">
+        {{ formulario.as_table }}
+    </table>
+    <div style= "text-align: center">
+    <p><input type="submit" value="Cambiar Avatar"></p>
+    </div>
+    </form>
+{% endblock %}

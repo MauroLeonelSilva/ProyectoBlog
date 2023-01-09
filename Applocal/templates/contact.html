@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1>Contactame!</h1>
+
+{% endblock %}
+
+{% block subtitulo %}
+
+estoy a disposición para lo que requieras
+
+{% endblock %}
+
+{% block contenido %} 
+<form action="{% url 'contact' %}" method="POST">{% csrf_token %}
+    <table style="margin: 20px auto;">
+        {{ form.as_table }}
+    </table>
+    <div style= "text-align: center">
+    <p><input type="submit" value="Enviar"></p>
+    </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<h2>Bienvenido {{user}} a tu sala de chats</h2>
+{% endblock %}
+
+{% block subtitulo %}
+<p>clickea al usuario con el que queres hablar</p>
+{% endblock %}
+
+{% block contenedor %}
+{% for inbox in inbox %}
+
+<div >
+
+    
+    {% for second_user in inbox.canalusuario_set.all %}
+    
+    {% if second_user.usuario == request.user %}
+    
+    {% else %}
+    <div style=" text-align: center; border-style: ridge;">
+        
+        <a href="{% url 'detailms' second_user.usuario.username %}">
+            <p >
+                chat con {{second_user.usuario}}
+            </p>
+        </a>
+    </div>
+    
+            {% endif %}
+    
+        {% endfor %}
+    
+        {% if inbox.canalmensaje_set.count == 0 %}
+                <p>
+                    no hay mensajes en nuestro inbox
+                </p>
+        {% endif %}
+    
+        {% empty %}
+        
+        <h3>
+            inbox vacio
+        </h3>
+        {% endfor %}
+        
+        <div style="padding: 10px 0; text-align: center; border-style: ridge;"> 
+            <a href="../busquedaUsuarios">
+                <h4>crear un chat nuevo</h4>
+            </a>
+        </div>
+        
+    </div>
+    {% endblock %}
+
