@@ -3,6 +3,14 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class blogModel(models.Model):
+    titulo= models.CharField(max_length=100)
+    subtitulo=models.CharField(max_length=150)
+    cuerpo=models.TextField()
+    imagen=models.ImageField(upload_to="imagenesPost")
+    autor=models.CharField(max_length=50)
+    fecha=models.TimeField(auto_now_add=True)
+
 class contactomodel(models.Model):
     nombrecontacto = models.CharField(max_length=50)
     emailcontacto = models.EmailField()
