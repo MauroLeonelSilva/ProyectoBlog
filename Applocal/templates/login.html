@@ -17,9 +17,13 @@
     </table>
     <div style= "text-align: center">
         <p><input type="submit" value="ingresar"></p>
+        
+        
     </div>
 </form>
-
+<div style= "text-align: center">
+<p><a href="{% url 'register' %}"><input type="submit" value="crear usuario"></a></p>
+</div>
 {{ mensaje }}
 
 {% endblock %}
