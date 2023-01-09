@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block subtitulo %}
-<p>clickea al usuario con el que queres hablar</p>
+<p>haz click en el usuario con el que quieras hablar, o crea un chat nuevo</p>
 {% endblock %}
 
 {% block contenedor %}
@@ -41,8 +41,8 @@
     
         {% empty %}
         
-        <h3>
-            inbox vacio
+        <h3 style="display: flex; justify-content: center;">
+            no tienes mensajes :(
         </h3>
         {% endfor %}
         
